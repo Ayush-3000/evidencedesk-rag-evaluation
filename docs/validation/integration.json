@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-04",
+  "platform": "Windows",
+  "python": "3.12.14",
+  "tests": 20,
+  "failures": 0,
+  "errors": 0,
+  "seconds": 27.96,
+  "engine": "PGlite PostgreSQL + pgvector",
+  "embeddings": "hash (integration tests); FastEmbed (semantic demo evaluation)"
+}

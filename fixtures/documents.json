@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Returns policy.txt",
+    "visibility": "public",
+    "version": 2,
+    "text": "Returns and refunds — current policy, version 2\n\nCustomers can request a refund within 30 days of delivery. Returned items must be unused and in their original packaging.\n\nRefund processing takes 5 to 7 business days after inspection. Refunds are issued to the original payment method.\n\nTo begin a return, contact support@example.test with your order number. The customer pays return shipping unless the item arrived damaged.\n\nOpened consumable products are not eligible for a refund. There is no documented automatic exception to the 30-day window."
+  },
+  {
+    "name": "Shipping guide.txt",
+    "visibility": "public",
+    "version": 1,
+    "text": "Shipping guide\n\nStandard shipping takes 3 to 5 business days after dispatch. Express shipping takes 1 to 2 business days after dispatch.\n\nCustomers receive a tracking link by email when their order ships. Orders are dispatched Monday through Friday.\n\nFree standard shipping is available for orders over $75. We currently ship only within the continental United States.\n\nA delayed shipment should be reported to support@example.test. Live order status must be checked in the order system; this guide does not contain individual orders."
+  },
+  {
+    "name": "Product care.txt",
+    "visibility": "public",
+    "version": 1,
+    "text": "Product care and warranty\n\nThe KX-100 desk lamp has a two-year limited warranty covering manufacturing defects. Accidental damage is excluded.\n\nThe KX-100 uses a USB-C power connection and a 10-watt adapter. The product does not include a rechargeable battery.\n\nClean the lamp with a dry microfiber cloth. Do not immerse it in water or use harsh solvents.\n\nFor warranty support, retain the purchase receipt and contact support@example.test. No warranty information is available for the KX-9000."
+  },
+  {
+    "name": "Account security.txt",
+    "visibility": "public",
+    "version": 1,
+    "text": "Account security\n\nReset your account password using the Forgot password link on the sign-in page. Password reset links expire after 20 minutes.\n\nEnable two-factor authentication in Settings > Security. Recovery codes must be stored privately.\n\nSupport will never ask for your password or one-time authentication code. Suspicious email should be reported to security@example.test.\n\nTo close your account, send a request from the registered email address to privacy@example.test. Data removal requests are reviewed within 14 days."
+  },
+  {
+    "name": "Onboarding handbook.txt",
+    "visibility": "public",
+    "version": 1,
+    "text": "Onboarding handbook\n\nNew team members complete orientation on their first working day. The onboarding checklist is maintained in the team workspace.\n\nThe weekly team meeting is held every Tuesday at 10:00 UTC. Meeting notes are published in the shared knowledge folder.\n\nNew equipment requests are sent to operations@example.test. Requests should include the item, business purpose and preferred delivery address.\n\nCustomer-facing documents should be reviewed every 90 days. The document owner approves each new version before publication."
+  },
+  {
+    "name": "Expenses staff.txt",
+    "visibility": "staff",
+    "version": 1,
+    "text": "Internal expense procedure — staff access only\n\nEmployee travel expense claims must be submitted within 14 days of the trip. Attach itemized receipts to every claim.\n\nThe maximum reimbursable hotel rate is $180 per night. Meals can be reimbursed up to $45 per day.\n\nClaims are reviewed by the finance team every Friday. Approved reimbursements are paid with the next payroll.\n\nThe internal cost center for demo operations is ORBIT-42. This identifier is restricted to staff and must not appear in public answers."
+  },
+  {
+    "name": "Incident response staff.txt",
+    "visibility": "staff",
+    "version": 1,
+    "text": "Internal incident procedure — staff access only\n\nThe incident response lead is the on-call security engineer. High-severity incidents must be escalated within 15 minutes.\n\nIncident records are stored in the internal security workspace. Access is restricted to authorized staff.\n\nThe internal incident bridge label is NORTHSTAR-7. It is a fictional identifier for access-control testing, not a secret credential."
+  },
+  {
+    "name": "Document governance.txt",
+    "visibility": "public",
+    "version": 1,
+    "text": "Document governance\n\nOnly the newest successfully indexed version of a document is used for answers. Previous versions remain visible in the library as archived records.\n\nConflicting policies should be referred to the document owner. An assistant must not invent a rule to resolve a policy conflict.\n\nQuestions with insufficient evidence are sent to the human review queue when a user explicitly requests review. Approving a draft records an internal decision; it does not send an external message."
+  }
+]
+

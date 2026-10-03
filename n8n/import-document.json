@@ -1,0 +1,120 @@
+{
+  "name": "EvidenceDesk - Import a document",
+  "id": "EvidenceDeskImport",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "Run demo import",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "name",
+              "name": "name",
+              "value": "Automation guide.txt",
+              "type": "string"
+            },
+            {
+              "id": "text",
+              "name": "text",
+              "value": "Automation guide\\n\\nThe daily catalog refresh runs at 02:00 UTC. A failed catalog import is checked by the operations team before a retry.",
+              "type": "string"
+            },
+            {
+              "id": "version",
+              "name": "version",
+              "value": 1,
+              "type": "number"
+            },
+            {
+              "id": "visibility",
+              "name": "visibility",
+              "value": "public",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "document",
+      "name": "Prepare demo document",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        410,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8090/api/integrations/documents",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "import-document",
+      "name": "Import into EvidenceDesk",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        650,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "evidencedesk-local-header",
+          "name": "EvidenceDesk integration"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "onError": "stopWorkflow"
+    }
+  ],
+  "connections": {
+    "Run demo import": {
+      "main": [
+        [
+          {
+            "node": "Prepare demo document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare demo document": {
+      "main": [
+        [
+          {
+            "node": "Import into EvidenceDesk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "versionId": "b6dbc917-f199-4cb9-94d8-87c0f9396282"
+}

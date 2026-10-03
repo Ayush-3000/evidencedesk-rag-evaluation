@@ -1,0 +1,68 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: evidence
+      POSTGRES_USER: evidence
+      POSTGRES_PASSWORD: ${EVIDENCE_POSTGRES_PASSWORD:?Run scripts/create_compose_env.py first}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U evidence -d evidence"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  bridge:
+    build:
+      context: .
+      target: bridge
+    environment:
+      DATABASE_URL: postgresql://evidence:${EVIDENCE_POSTGRES_PASSWORD}@postgres:5432/evidence
+      EVIDENCE_DB_TOKEN: ${EVIDENCE_DB_TOKEN:?Run scripts/create_compose_env.py first}
+      EVIDENCE_DB_HOST: 0.0.0.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8091/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  api:
+    build:
+      context: .
+      target: app
+    environment: &app-env
+      EVIDENCE_MODE: demo
+      EVIDENCE_DATA_DIR: /app/runtime
+      EVIDENCE_DB_URL: http://bridge:8091
+      EVIDENCE_DB_TOKEN: ${EVIDENCE_DB_TOKEN}
+      EVIDENCE_INTEGRATION_TOKEN: ${EVIDENCE_INTEGRATION_TOKEN:?Run scripts/create_compose_env.py first}
+      EVIDENCE_EMBEDDINGS: ${EVIDENCE_EMBEDDINGS:-fastembed}
+      EVIDENCE_DRAFTER: extractive
+    volumes:
+      - documents:/app/runtime
+    ports:
+      - "127.0.0.1:8090:8090"
+    depends_on:
+      bridge:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://127.0.0.1:8090/api/health').raise_for_status()"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  worker:
+    build:
+      context: .
+      target: app
+    command: ["python", "-m", "evidencedesk.worker"]
+    environment: *app-env
+    volumes:
+      - documents:/app/runtime
+    depends_on:
+      api:
+        condition: service_healthy
+volumes:
+  postgres:
+  documents:

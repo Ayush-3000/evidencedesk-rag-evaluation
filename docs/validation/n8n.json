@@ -1,0 +1,10 @@
+{
+  "n8n_version": "2.41.6",
+  "manual_workflow_executions": 2,
+  "imported_versions": 1,
+  "webhook_imported": true,
+  "webhook_executed": true,
+  "webhook_executions": 2,
+  "webhook_unauthenticated_status": 403,
+  "webhook_duplicate_prevented": true
+}

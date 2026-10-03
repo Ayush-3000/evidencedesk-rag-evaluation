@@ -1,0 +1,81 @@
+{
+  "name": "EvidenceDesk - Authenticated document webhook",
+  "id": "EvidenceDeskWebhook",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "evidencedesk-import",
+        "authentication": "headerAuth",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "webhookId": "2359389b-8b0d-440f-9f3d-984e93aba48b",
+      "name": "Receive document",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        300,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "evidencedesk-local-header",
+          "name": "EvidenceDesk integration"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8090/api/integrations/documents",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "import-document",
+      "name": "Import into EvidenceDesk",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        650,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "evidencedesk-local-header",
+          "name": "EvidenceDesk integration"
+        }
+      },
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1000,
+      "onError": "stopWorkflow"
+    }
+  ],
+  "connections": {
+    "Receive document": {
+      "main": [
+        [
+          {
+            "node": "Import into EvidenceDesk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "versionId": "6e9af0ce-42e8-499a-ac58-3c8663dbe9ab"
+}
