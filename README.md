@@ -1,5 +1,7 @@
 # EvidenceDesk
 
+[![Verify EvidenceDesk](https://github.com/Ayush-3000/evidencedesk-rag-evaluation/actions/workflows/ci.yml/badge.svg)](https://github.com/Ayush-3000/evidencedesk-rag-evaluation/actions/workflows/ci.yml)
+
 **Document answers you can inspect. Human decisions you can review. Quality you can measure.**
 
 EvidenceDesk is a working document assistant with local semantic retrieval, exact source quotations, document versions, an approval queue, and a reproducible evaluation dashboard. Its Graphite & Tangerine interface uses a floating navigation rail, a spacious reading canvas, subtle motion, and a source inspector.
@@ -102,7 +104,7 @@ python scripts/smoke_demo.py
 
 The local test suite uses real, isolated PostgreSQL/pgvector storage, an actual generated PDF, and HTTP requests. It covers duplicate and concurrent imports, version activation, failed imports and retry, session/access boundaries, stale approvals, job recovery, database restart, evaluation computation, concurrent evaluation creation, incompatible embedding modes, and rejecting invented model quotations.
 
-The local semantic demo passed **44/44 fixture cases** and the integration suite passed **20 tests**. These fixtures are a transparent regression rubric, **not an independent accuracy benchmark or a promise of performance on unseen documents**. Saved results are in [docs/validation](docs/validation/). GitHub Actions checks both embedded and native PostgreSQL, and builds/runs the Compose stack in explicit offline mode.
+The local semantic demo passed **44/44 fixture cases** and the integration suite passed **21 tests**. These fixtures are a transparent regression rubric, **not an independent accuracy benchmark or a promise of performance on unseen documents**. Saved results are in [docs/validation](docs/validation/). GitHub Actions checks both embedded and native PostgreSQL, and builds/runs the Compose stack in explicit offline mode.
 
 ## Containers and optional AI
 

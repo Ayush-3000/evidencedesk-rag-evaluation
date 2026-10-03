@@ -9,9 +9,9 @@
 | Theme | Background | Surface | Text | Accent |
 |---|---|---|---|---|
 | Graphite & Tangerine — default | `#151719` | `#22262A` | `#FAF8F5` | `#FFB67A` |
-| Midnight & Mint | `#101A24` | `#192A37` | `#EDF8F5` | `#7DE0C3` |
-| Ivory & Cobalt | `#F6F3ED` | `#FFFFFF` | `#17213D` | `#3156D3` |
-| Sage & Forest | `#EDF2EC` | `#F8FAF6` | `#19392C` | `#2D6A4F` |
+| Midnight & Mint | `#0B1519` | `#14272C` | `#EDF7F3` | `#7DE0C3` |
+| Ivory & Cobalt | `#F8F6F0` | `#FFFFFF` | `#17233B` | `#3156D3` |
+| Sage & Forest | `#F0F5EE` | `#FCFDF8` | `#163A2D` | `#2D6A4F` |
 
 Subtle page/source transitions, an animated navigation indicator, chart transitions and indexing states make changes legible. System reduced-motion preferences and a persistent user toggle suppress motion. Small screens use bottom navigation and stack the inspector below the reading area. Drawers isolate background controls and support Escape/focus cycling. Loading, empty, failed-import, denied-role, and stale-review states are part of the product.
 

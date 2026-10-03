@@ -246,6 +246,9 @@ def index_document(job: dict):
 
 
 def retrieve(question: str, role: str) -> list[dict]:
+    qt = tokens(question)
+    if not qt:
+        return []
     rows = sql(
         """SELECT c.id,c.text,c.page,d.id AS document_id,d.name,d.version,
       1-(c.embedding <=> $1::vector) AS similarity,
@@ -255,7 +258,6 @@ def retrieve(question: str, role: str) -> list[dict]:
       ORDER BY (c.embedding <=> $1::vector) LIMIT 12""",
         [vector_literal(embed(question)), question, role],
     )
-    qt = tokens(question)
     for row in rows:
         overlap = len(qt & tokens(row["text"]))
         row["overlap"] = overlap

@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-04",
+  "desktop": true,
+  "mobile_viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "themes_verified": [
+    "graphite",
+    "midnight",
+    "ivory",
+    "sage"
+  ],
+  "reduced_motion_toggle": true,
+  "pdf_upload_and_indexing": true,
+  "pdf_answer_page_citation": 2,
+  "source_drawer_escape": true,
+  "review_draft_saved": true,
+  "reader_review_and_evaluation_disabled": true,
+  "native_postgresql_ci_run": "https://github.com/Ayush-3000/evidencedesk-rag-evaluation/actions/runs/37155715107",
+  "container_smoke_ci": "passed in offline/hash mode",
+  "optional_openai_live_call": "not tested"
+}

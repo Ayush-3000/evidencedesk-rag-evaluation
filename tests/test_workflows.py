@@ -12,6 +12,13 @@ def test_refund_exception_uses_documented_window(client, core, uploaded):
     assert core.answer("Can I return an item after 45 days?", "viewer")["status"] == "needs_review"
 
 
+def test_question_without_searchable_terms_hands_off(client, core, uploaded):
+    response = client.post("/api/questions", json={"question": "What?"})
+    assert response.status_code == 200
+    assert response.json()["status"] == "needs_review"
+    assert response.json()["sources"] == []
+
+
 def test_exhausted_interrupted_import_leaves_retryable_failure(client, core):
     client.post(
         "/api/documents",
